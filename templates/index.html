@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flipkart Product Reviews</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #f4f8fb;
+        }
+        h2 {
+            color: #2874f0;
+            font-weight: bold;
+        }
+        .table thead th {
+            background-color: #2874f0;
+            color: #fff;
+            border: none;
+        }
+        .table-striped > tbody > tr:nth-of-type(odd) {
+            background-color: #e3f0fc;
+        }
+        .table-bordered {
+            border: 2px solid #2874f0;
+        }
+        .table-bordered th, .table-bordered td {
+            border: 1.5px solid #2874f0;
+        }
+        .form-control:focus {
+            border-color: #2874f0;
+            box-shadow: 0 0 0 0.2rem rgba(40, 116, 240, 0.25);
+        }
+        .btn-primary {
+            background-color: #2874f0;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #1856a7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Flipkart Product Reviews</h2>
+        <!-- Search Form -->
+        <form method="POST">
+            <div class="mb-3">
+                <input type="text" name="product" class="form-control" placeholder="Enter product name" value="{{ product }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <!-- Show Reviews Table -->
+        {% if reviews %}
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped mt-4">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Rating</th>
+                        <th>Review Heading</th>
+                        <th>Review</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in reviews %}
+                    <tr>
+                        <td>{{ r.name }}</td>
+                        <td><span class="badge bg-primary">{{ r.rating }}</span></td>
+                        <td>{{ r.review_heading }}</td>
+                        <td>{{ r.review }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% elif product %}
+        <div class="alert alert-warning mt-4">No reviews found for '{{ product }}'.</div>
+        {% endif %}
+    </div>
+</body>
+</html>
