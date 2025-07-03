@@ -2,6 +2,9 @@
 
 This project is a simple web application built with Flask and Bootstrap that allows users to search for any product on Flipkart and view its reviews in a clean, blue-themed table.
 
+## Live Demo
+- Try it here: [https://flipkart-webscraping.onrender.com/](https://flipkart-webscraping.onrender.com/)
+
 ## Features
 - Enter any Flipkart product name in the search box
 - Scrapes and displays reviews (Name, Rating, Review Heading, Review)
@@ -33,6 +36,7 @@ This project is a simple web application built with Flask and Bootstrap that all
 - Flask
 - requests
 - beautifulsoup4
+- gunicorn (for deployment)
 
 ## File Structure
 ```
